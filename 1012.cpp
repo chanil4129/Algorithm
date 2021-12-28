@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//https://www.acmicpc.net/problem/1012
+
 int arr[51][51];		//배추 심은 곳 좌표
 int M, N;		//(가로 길이),(세로 길이)
 
