@@ -39,10 +39,13 @@
     <ClCompile Include="1003.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="계수정렬.cpp">
+    <ClCompile Include="CountingSort.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="1431.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UnionFind.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
