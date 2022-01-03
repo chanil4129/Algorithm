@@ -31,10 +31,10 @@ int main(void) {
 	union_parent(arr, 6, 7);
 	union_parent(arr, 7, 8);
 	union_parent(arr, 8, 9);
-	cout << "1과 9 연결관계 :";
+	cout << "1과 9 연결관계 : ";
 	find_parent(arr,1,9);		//1~4까지 연결되어 있고, 5~9까지만 연결되어 있음.
 	//연결 후
 	union_parent(arr, 4, 5);		//4,5 연결
-	cout << "\n1과 9 연결관계 :";
+	cout << "\n1과 9 연결관계 : ";
 	find_parent(arr, 1, 9);		//4,5가 연결되면 1~9까지 모두 연결된다.
 }
