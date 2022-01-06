@@ -12,7 +12,7 @@ int d[7]; // 최소 비용입니다.
 
 void dijkstra(int start) {
 	d[start] = 0;
-	priority_queue<pair<int, int> > pq; // 힙 구조입니다. (19번째 줄 보면 바로 쓰는거 같은데) 왜 10번째 줄의 간선 정보가 들어 갈 수 있는건지? 
+	priority_queue<pair<int, int> > pq; // 힙 구조입니다. (19번째 줄 보면 바로 쓰는거 같은데) 왜 10번째 줄의 간선 정보가 '바로' 들어 갈 수 있는건지? 
 	pq.push(make_pair(start, 0));
 	// 가까운 순서대로 처리하므로 큐를 사용합니다.
 	while(!pq.empty()) {
