@@ -7,12 +7,12 @@ using namespace std;
 int number = 6;
 int INF = 10000000;
 
-vector<pair<int, int> > a[7]; // 간선 정보입니다. 
+vector<pair<int, int>> node[7]; // 간선 정보입니다. 
 int d[7]; // 최소 비용입니다. 
 
 void dijkstra(int start) {
 	d[start] = 0;
-	priority_queue<pair<int, int> > pq; // 힙 구조입니다. (19번째 줄 보면 바로 쓰는거 같은데) 왜 10번째 줄의 간선 정보가 '바로' 들어 갈 수 있는건지? 
+	priority_queue<pair<int, int> > pq; // 힙 구조입니다. a[1].push_back(make_pair(2, 2));
 	pq.push(make_pair(start, 0));
 	// 가까운 순서대로 처리하므로 큐를 사용합니다.
 	while(!pq.empty()) {
@@ -22,11 +22,11 @@ void dijkstra(int start) {
 		pq.pop();
 		// 최단 거리가 아닌 경우 스킵합니다. 
 		if(d[current] < distance) continue;
-		for(int i = 0; i < a[current].size(); i++) {
+		for(int i = 0; i < node[current].size(); i++) {
 			// 선택된 노드의 인접 노드 
-			int next = a[current][i].first; 
+			int next = node[current][i].first; 
 			// 선택된 노드를 인접 노드로 거쳐서 가는 비용 
-			int nextDistance = distance + a[current][i].second;
+			int nextDistance = distance + node[current][i].second;
 			// 기존의 최소 비용보다 더 저렴하다면 교체합니다. 
 			if(nextDistance < d[next]) {
 				d[next] = nextDistance;
@@ -42,31 +42,31 @@ int main(void) {
 		d[i] = INF;
 	}
 	
-	a[1].push_back(make_pair(2, 2));
-	a[1].push_back(make_pair(3, 5));
-	a[1].push_back(make_pair(4, 1));
+	node[1].push_back(make_pair(2, 2));
+	node[1].push_back(make_pair(3, 5));
+	node[1].push_back(make_pair(4, 1));
 	
-	a[2].push_back(make_pair(1, 2));
-	a[2].push_back(make_pair(3, 3));
-	a[2].push_back(make_pair(4, 2));
+	node[2].push_back(make_pair(1, 2));
+	node[2].push_back(make_pair(3, 3));
+	node[2].push_back(make_pair(4, 2));
 	
-	a[3].push_back(make_pair(1, 5));
-	a[3].push_back(make_pair(2, 3));
-	a[3].push_back(make_pair(4, 3));
-	a[3].push_back(make_pair(5, 1));
-	a[3].push_back(make_pair(6, 5));
+	node[3].push_back(make_pair(1, 5));
+	node[3].push_back(make_pair(2, 3));
+	node[3].push_back(make_pair(4, 3));
+	node[3].push_back(make_pair(5, 1));
+	node[3].push_back(make_pair(6, 5));
 	
-	a[4].push_back(make_pair(1, 1));
-	a[4].push_back(make_pair(2, 2));
-	a[4].push_back(make_pair(3, 3));
-	a[4].push_back(make_pair(5, 1));
+	node[4].push_back(make_pair(1, 1));
+	node[4].push_back(make_pair(2, 2));
+	node[4].push_back(make_pair(3, 3));
+	node[4].push_back(make_pair(5, 1));
 	
-	a[5].push_back(make_pair(3, 1));
-	a[5].push_back(make_pair(4, 1));
-	a[5].push_back(make_pair(6, 2));
+	node[5].push_back(make_pair(3, 1));
+	node[5].push_back(make_pair(4, 1));
+	node[5].push_back(make_pair(6, 2));
 	
-	a[6].push_back(make_pair(3, 5));
-	a[6].push_back(make_pair(5, 2));
+	node[6].push_back(make_pair(3, 5));
+	node[6].push_back(make_pair(5, 2));
 	
 	dijkstra(1);
 	
