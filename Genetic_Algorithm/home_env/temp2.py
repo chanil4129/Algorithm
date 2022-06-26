@@ -3,9 +3,8 @@ from functools import reduce
 
 ans_chrm = []
 ans_cost = 9999
-mating=100 #교배 횟수
 population_size=5 #해집단의 크기
-cross_probability=0.7 #교차율
+# pc=3 #교차율
 mutation_probability=0.001 #변이율
 
 #total cost 
@@ -45,19 +44,12 @@ def chrm_select(population):
     #개체 및 교차,돌연변이 중 선택
     for i in range(population_size):
         rn=random.random()
-        if rn>cross_probability+mutation_probability:
-            continue
-        elif rn>mutation_probability:
+        if rn>mutation_probability:
             chrm_cross(population[selected[i],selected[i+population_size]])
         elif rn>mutation_probability/2:
             chrm_mutation_change(population[selected[i]])
         else:
             chrm_mutation_insert(population[selected[i]])
-
-    for i in range(population_size):
-        if ans_cost>get_totalcost(population[i]):
-            ans_cost=get_totalcost(population[i])
-            ans_chrm=population[i]
 
 #교차
 def chrm_cross(parent1,parent2):
@@ -113,10 +105,5 @@ if __name__=='__main__':
 
     population=[]
     init_chrm(population)
-    for i in range(mating):
-        chrm_select(population)
-
-    print("population : "+ans_chrm)
-    print("cost : "+ans_cost)
 
 
