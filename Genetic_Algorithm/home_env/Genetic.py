@@ -1,12 +1,15 @@
 import random,copy,operator
 from functools import reduce
 
+#찾고자 하는 경로와 비용
 ans_chrm = []
 ans_cost = 9999
+
+#설정
 mating=100 #교배 횟수
 population_size=5 #해집단의 크기
-cross_probability=0.7 #교차율
-mutation_probability=0.001 #변이율
+cross_probability=0.7 #교차율 0.7
+mutation_probability=0.001 #변이율 0.001~0.01
 
 #total cost 
 def get_totalcost(chrm):
