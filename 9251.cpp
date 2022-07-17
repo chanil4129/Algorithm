@@ -34,14 +34,14 @@ int ans;
 
 int main(void) {
 	int i, j;
-	int flag;
+	int flag; //누적값 확인
 	cin >> s1 >> s2;
 	for (i = 0; s1[i]; i++) {
-		flag = 0;
+		flag = 0; //초기화
 		for (j = 0; s2[j]; j++) {
-			if (flag < d[j]) flag = d[j];
-			else if (s1[i] == s2[j]) d[j] = flag + 1;
-			ans = max(ans, d[j]);
+			if (flag < d[j]) flag = d[j]; //누적값보다 작다면 누적값으로 같게 만들기
+			else if (s1[i] == s2[j]) d[j] = flag + 1; //누적값 보다 크거나 같으면서 두 문자가 같으면 flag+1 누적값 넣기
+			ans = max(ans, d[j]); //가장 큰 값이 출력값
 		}
 	}
 	cout << ans;
