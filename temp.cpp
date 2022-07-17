@@ -1,18 +1,25 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-int arr[31] = { 1,0,3 };
-
-int f(int n) {
-	if (n % 2) return 0;
-	if (arr[n] != 0) return arr[n];
-	int result = 3 * f(n - 1);
-	for (int i = 3; i < n; i++) if(i%2==0) result += 2 * f(n - i);
-	return arr[n] = result;
-}
+int d[1111];
+char s1[1111], s2[1111];
+int ans;
 
 int main(void) {
-	int N;
-	cin >> N;
-	cout << f(N);
+	int i, j;
+	int cnt;
+	cin >> s1 >> s2;
+	for (i = 0; s1[i]; i++) {
+		cnt = 0;
+		for (j = 0; s2[j]; j++) {
+			if (cnt < d[j])
+				cnt = d[j];
+			else if (s1[i] == s2[j])
+				d[j] = cnt + 1;
+			ans = max(ans, d[j]);
+		}
+	}
+	cout << ans;
 }
