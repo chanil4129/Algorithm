@@ -14,17 +14,16 @@ int f(int left, int right) {
 		return 1;
 	}
 	//중복검사
-	int& ref = d[left][right];
-	if (ref != -1) return ref;
-	//
+	int& ret = d[left][right];
+	if (ret != -1) return 0;
+	//조건실행
 	if (s1[left] == tgt[cur]) {
-		if(f(left + 1, right)) return ref=1;
-
+		if(f(left + 1, right)) return ret=1;
 	}
 	if (s2[right] == tgt[cur]) {
-		if(f(left, right + 1)) return ref=1;
+		if(f(left, right + 1)) return ret=1;
 	}
-	return ref=0;
+	return ret=0;
 }
 
 int main(void) {
@@ -32,9 +31,9 @@ int main(void) {
 	cin >> T;
 	for (int i = 1; i <= T; i++) {
 		cin >> s1 >> s2 >> tgt;
-		memset(d, -1, sizeof(d));
-		if (f(0, 0)) ans = "yes";
+		memset(d, -1, sizeof(d)); //중복검사를 위한 초기화
+		if (f(0, 0)) ans = "yes"; //
 		else ans = "no";
-		cout << "Data set " << i << ":" << ans<<"\n";
+		cout << "Data set " << i << ": " << ans<<"\n";
 	}
 }

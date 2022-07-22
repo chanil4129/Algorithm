@@ -18,3 +18,5 @@ int main(void) {
 	}
 	cout << u.size();
 }
+
+//https://www.acmicpc.net/problem/11478
