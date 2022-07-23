@@ -37,3 +37,5 @@ int main(void) {
 		cout << "Data set " << i << ": " << ans<<"\n";
 	}
 }
+
+//https://www.acmicpc.net/problem/9177

@@ -6,7 +6,7 @@ using namespace std;
 
 int C, N;
 int a, b; //a:홍보할 때 드는 비용. b:그 비용으로 얻을 수 있는 고객의 수
-int d[MAX]; //DP table
+int d[MAX]; //DP table. index는 비용. D[index]는 비용당 가능한 최대 인원
 
 int main(void) {
 	cin >> C >> N;
