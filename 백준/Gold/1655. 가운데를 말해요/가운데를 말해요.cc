@@ -11,8 +11,8 @@ int main() {
     cout.tie(NULL);
 
     cin >> n;
-    int input;
 
+    int input;
     for (int i = 0; i < n; i++) {
         cin >> input;
         if (maxQ.size() == minQ.size()) {
