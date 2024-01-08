@@ -3,6 +3,10 @@ using namespace std;
 
 string s;
 
+bool isVowel(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
 int main(void) {
     while (true) {
         cin >> s;
@@ -10,50 +14,41 @@ int main(void) {
             return 0;
         }
 
-        bool isV = false;
-        bool isT = true;
-        bool isS = true;
-        stack<char> c;
+        bool isV = false;  // 1번 조건
+        bool isT = true;   // 2번 조건
+        bool isS = true;   // 3번 조건
+        stack<char> cs;
 
         for (int i = 0; i < s.length(); i++) {
-            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' ||
-                s[i] == 'u') {
+            if (isVowel(s[i])) {
                 isV = true;
             }
 
-            if (!c.empty() && isT) {
-                if (c.top() == 'a' || c.top() == 'e' || c.top() == 'i' ||
-                    c.top() == 'o' || c.top() == 'u') {
-                    if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' ||
-                        s[i] == 'o' || s[i] == 'u') {
-                        if (c.size() == 2) {
+            if (!cs.empty() && isT) {
+                if (isVowel(cs.top())) {
+                    if (isVowel(s[i])) {
+                        if (cs.size() == 2) {
                             isT = false;
-                        } else {
-                            c.push(s[i]);
                         }
                     } else {
-                        while (!c.empty()) {
-                            c.pop();
+                        while (!cs.empty()) {
+                            cs.pop();
                         }
-                        c.push(s[i]);
                     }
                 } else {
-                    if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' ||
-                        s[i] == 'o' || s[i] == 'u') {
-                        while (!c.empty()) {
-                            c.pop();
+                    if (isVowel(s[i])) {
+                        while (!cs.empty()) {
+                            cs.pop();
                         }
-                        c.push(s[i]);
                     } else {
-                        if (c.size() == 2) {
+                        if (cs.size() == 2) {
                             isT = false;
-                        } else {
-                            c.push(s[i]);
                         }
                     }
                 }
-            } else if (isT) {
-                c.push(s[i]);
+            }
+            if (isT) {
+                cs.push(s[i]);
             }
 
             if (i > 0 && !(s[i] == 'e' || s[i] == 'o') && s[i - 1] == s[i]) {
