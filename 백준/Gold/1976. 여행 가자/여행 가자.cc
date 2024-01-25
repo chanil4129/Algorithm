@@ -21,11 +21,11 @@ void union_root(int x, int y) {
     if (x != y) {
         if (hit[x] < hit[y]) {
             prt[x] = y;
-        } else if (hit[x] > hit[y]) {
-            prt[y] = x;
         } else {
-            prt[x] = y;
-            hit[x]++;
+            if (hit[x] == hit[y]) {
+                hit[x]++;
+            }
+            prt[y] = x;
         }
     }
 }
