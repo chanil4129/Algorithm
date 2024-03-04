@@ -5,7 +5,7 @@ int n;
 vector<long long> load;
 vector<long long> city;
 vector<long long> price;
-int ans;
+long long ans;
 
 int main(void) {
     cin >> n;
@@ -35,5 +35,4 @@ int main(void) {
         ans += price[i];
     }
     cout << ans;
-    // 마지막 기름
 }
